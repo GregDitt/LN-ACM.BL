@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Acme.Common;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace LN_ACM.BL
 {
-   public class Order
+   public class Order : EntityBase, ILoggable
     {
-        public Order()
+        public Order() : this(0)
         {
 
         }
@@ -14,11 +15,28 @@ namespace LN_ACM.BL
         public Order(int orderId)
         {
             OrderId = orderId;
+            OrderItems = new List<OrderItem>();
         }
+        public int CustomerId { get; set; }
 
         public DateTimeOffset? OrderDate { get; set; }
         public int OrderId { get; private set; }
 
+        public List<OrderItem> OrderItems { get; set; }
+        public int ShippingAddressId { get; set; }
+
+
+
+        public string Log() =>
+
+            $"{OrderId}: Date: {this.OrderDate.Value.Date} Status: {this.EntityState.ToString()}";
+
+
+
+
+
+
+        public override string ToString() => $"{OrderDate.Value.Date} ({OrderId})";
         //public Order Retrive(int orderId)
         //{
         //    return new Order();
@@ -29,7 +47,11 @@ namespace LN_ACM.BL
         //    return true;
         //}
 
-        public bool Validate()
+
+
+
+
+        public override bool Validate()
         {
             var isValid = true;
 

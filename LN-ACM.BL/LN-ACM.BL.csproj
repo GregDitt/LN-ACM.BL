@@ -5,4 +5,8 @@
     <RootNamespace>LN_ACM.BL</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Acme.Common\Acme.Common.csproj" />
+  </ItemGroup>
+
 </Project>

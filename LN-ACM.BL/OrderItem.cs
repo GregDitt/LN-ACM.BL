@@ -4,7 +4,7 @@ using System.Text;
 
 namespace LN_ACM.BL
 {
-    class OrderItem
+    public class OrderItem
     {
         public OrderItem()
         {
@@ -34,8 +34,8 @@ namespace LN_ACM.BL
         {
             var isValid = true;
 
-            if (Quantity <= null) isValid = false;
-            if (ProductId <= null) isValid = false;
+            if (Quantity == null) isValid = false;
+            if (ProductId == null) isValid = false;
             if (PurchasePrice == null) isValid = false;
 
             return isValid;
